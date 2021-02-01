@@ -1,7 +1,7 @@
 import React,  {Component} from 'react'
 import axios from 'axios'
 
-class Landing extends Component {
+class Profile extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -14,10 +14,10 @@ class Landing extends Component {
     render(){
         return(
             <div>
-                Landing
+                profile
             </div>
         )
     }
 }
 
-export default Landing
+export default Profile

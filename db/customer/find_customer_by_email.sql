@@ -1,3 +1,3 @@
 SELECT * FROM customer 
-WHERE username = ${email};
+WHERE email = $1;
 
