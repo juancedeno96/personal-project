@@ -4,6 +4,7 @@ const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 const session = require("express-session");
 const express = require("express");
 const authCtrl = require("./controllers/authController");
+const pc = require('./controllers/productController')
 
 const app = express();
 app.use(express.json());
@@ -26,9 +27,12 @@ app.use(
   })
 );
 
-//Endpoints
+// Auth Endpoints
 
 app.post("/api/register", authCtrl.register);
 app.post('/api/login', authCtrl.login)
 app.get('/api/me', authCtrl.getUser)
 app.post('/api/logout', authCtrl.logout)
+
+// Product Endpoints
+app.get('/api/all', pc.getAllProduct)

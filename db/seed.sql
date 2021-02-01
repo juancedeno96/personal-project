@@ -14,6 +14,12 @@ create table product (
     img_url text
 );
 
+
+insert into product (name, unit_price, img_url)
+values ()
+select * from product
+
+
 create table order(
     order_id serial primary key,
     total numeric,
