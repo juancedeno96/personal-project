@@ -14,12 +14,22 @@ class Auth extends Component {
       profile_pic: "",
     };
     this.register = this.register.bind(this);
+    this.login = this.login.bind(this)
   }
 
   handleChange(prop, val) {
     this.setState({
       [prop]: val,
     });
+  }
+
+  login() {
+      axios.post('/api/login', this.state)
+      .then(res => {
+          this.props.updateUser(res.data)
+          this.props.history.push('/home')
+      })
+      .catch(err=>console.log(err))
   }
 
   register() {
@@ -33,7 +43,7 @@ class Auth extends Component {
   }
 
   render() {
-    console.log(this.props);
+    
     return (
       <div>
         Auth
@@ -48,9 +58,12 @@ class Auth extends Component {
           <input value={this.state.password} onChange={(e) => this.handleChange("password", e.target.value)}/>
 
           <input value={this.state.profile_pic} onChange={(e) => this.handleChange("profile_pic", e.target.value)}/>
-
+          <button onClick={this.register}>register</button>
         </div>
-        <button onClick={this.register}>register</button>
+        Login
+        <input value={this.state.email} onChange={(e) => this.handleChange("email", e.target.value)}/>
+        <input value={this.state.password} onChange={(e) => this.handleChange("password", e.target.value)}/>
+        <button onClick={this.login}>login</button>
       </div>
     );
   }

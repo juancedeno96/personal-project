@@ -24,6 +24,7 @@ class Landing extends Component {
   };
 
   render() {
+    
      const mappedProduct = this.state.product.map((e)=>{
          return(
              <div key = {e.product_id}>

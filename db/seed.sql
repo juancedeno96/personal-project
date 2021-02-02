@@ -16,7 +16,7 @@ create table product (
 
 
 insert into product (name, unit_price, img_url)
-values ()
+values ()                                          --Table to add products, only I can modify it
 select * from product
 
 
