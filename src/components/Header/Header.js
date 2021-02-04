@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { updateUser, logoutUser, updateOrder } from "../../redux/userReducer";
+import { updateUser, logoutUser } from "../../redux/userReducer";
 class Header extends Component {
 
   componentDidMount =()=>{
@@ -24,8 +24,7 @@ this.getUser()
   }
   
 
-  render() {
-      console.log(this.props)
+  render() {      
     return this.props.location.pathname !== '/' &&
     <header>
 <Link to ='/home'><span>Home</span> </Link> <br/>
@@ -34,14 +33,14 @@ this.getUser()
 <p>{this.props.first_name} {this.props.last_name} </p>
 <Link to ='/' ><span onClick={this.logoutUser} >logout</span></Link>
 
-    </header>;
+    </header>
     
     
   }
  
 }
 
-const mapStateToProps = reduxState => reduxState
+const mapStateToProps = reduxState => reduxState.userReducer
 
 export default withRouter(connect(mapStateToProps, { updateUser, logoutUser})(Header));
 

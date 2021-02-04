@@ -25,13 +25,13 @@ class Profile extends Component {
           alt={this.props.first_name}
         />
         <div>
-          {this.props.first_name} {this.props.last_name}{" "}
+          {this.props.first_name} {this.props.last_name}
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (reduxState) => reduxState;
+const mapStateToProps = (reduxState) => reduxState.userReducer;
 
 export default connect(mapStateToProps, { updateUser })(Profile);

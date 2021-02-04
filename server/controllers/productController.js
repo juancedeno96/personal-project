@@ -1,5 +1,3 @@
-const purchases = []
-
 
 module.exports = {
     getAllProduct: async (req,res) => {
@@ -8,10 +6,10 @@ module.exports = {
         return res.status(200).send(allProducts)
     },
 
-    addProduct: async (req, res) => {
-        const {total, customer_id, quantity} = req.body
+    addProduct: (req, res) => {
         const db = req.app.get('db')
-        const order = await db.order.add_product(total, customer_id, quantity)
-        return res.status(201).send(order)
+        const {total, customer_id, quantity} = req.body
+        const order = db.order.get_product(total, customer_id, quantity)
+        return res.status(200).send(order)
     }
 }

@@ -25,8 +25,7 @@ create table orders (
     total numeric,
     customer_id int references customer(customer_id),
     quantity int,
-    date_created timestamp
-);
+)
 
 insert into orders (total, customer_id, quantity, date_created)
 values ($1, $2, $3, $4)
@@ -44,6 +43,6 @@ create table favorite(
 
 
 
-select name, first_name, quantity, total from ecuador e join orders o
+select name, first_name, quantity, total from customer c join orders o
 on e.customer_id = o.customer_id join order_items oi on o.order_id = oi.order_id
 join product p on p.product_id = oi.product_id

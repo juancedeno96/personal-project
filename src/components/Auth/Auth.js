@@ -37,7 +37,7 @@ class Auth extends Component {
       .post("/api/register", this.state)
       .then((res) => {
         this.props.updateUser(res.data);
-        this.props.history.push("/home");
+        alert('registered!')
       })
       .catch((err) => console.log(err));
   }

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { updateUser, logoutUser, updateOrder } from "../../redux/userReducer";
+import { updateUser } from "../../redux/userReducer";
+import "../Landing/Landing.css";
 
 class Landing extends Component {
   constructor(props) {
@@ -14,73 +15,44 @@ class Landing extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount =()=> {
     this.getProduct();
   }
 
-  handleChange = (prop, val) => {
-    this.setState({
-      [prop]: val,
-    });
-  };
 
   getProduct = () => {
     axios
       .get("/api/all")
       .then((res) => {
         this.setState({
-          product: res.data,
+          product: res.data
         });
       })
       .catch((err) => console.log(err));
   };
 
-  addProduct = () => {
-    axios
-      .post(
-        "api/addProduct",
-        this.state.total,
-        this.state.quantity,
-        this.state.customer_id
-      )
-      .then((res) => {
-        this.props.updateOrder(res.data);
-        this.setState({
-          total: this.state.product.map(
-            (e) => e.unit_price * this.state.quantity
-          ),
-          customer_id: this.props.customer_id,
-        });
-      })
-      .catch((err) => console.log(err));
-  };
-
+ 
   render() {
+    console.log(this.props);
     const mappedProduct = this.state.product.map((e) => {
       return (
-        <div key={e.product_id}>
+        <div className="product" key={e.product_id}>
           <img src={e.img_url} alt={e.name} />
           <p>{e.name}</p>
           <p>${e.unit_price}</p>
-          <button onClick={this.addProduct}>add to cart</button>
-          <input
-            value={this.state.quantity}
-            type="number"
-            onChange={(e) => this.handleChange("quantity", e.target.value)}
-          />
+          <button>add to cart</button>
+          <input type="number"/>
         </div>
       );
     });
     console.log(this.state.product);
-    return (
-      <div>
-        Landing
-        {mappedProduct}
-      </div>
-    );
+    return <div className="product-container">{mappedProduct}</div>;
   }
 }
 
-const mapStateToProps = (reduxState) => reduxState;
+const mapStateToProps = (reduxState) => ({
+  orderReducer: reduxState.orderReducer,
+  userReducer: reduxState.userReducer,
+});
 
-export default connect(mapStateToProps, { updateUser, updateOrder })(Landing);
+export default connect(mapStateToProps, { updateUser })(Landing);
