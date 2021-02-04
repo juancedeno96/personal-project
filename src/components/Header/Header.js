@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { updateUser, logoutUser } from "../../redux/userReducer";
-
+import { updateUser, logoutUser, updateOrder } from "../../redux/userReducer";
 class Header extends Component {
 
   componentDidMount =()=>{
@@ -42,8 +41,8 @@ this.getUser()
  
 }
 
-const mapStateToProps = (reduxState) => reduxState
+const mapStateToProps = reduxState => reduxState
 
-export default withRouter(connect(mapStateToProps, { updateUser, logoutUser })(Header));
+export default withRouter(connect(mapStateToProps, { updateUser, logoutUser})(Header));
 
 

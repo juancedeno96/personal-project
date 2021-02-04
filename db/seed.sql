@@ -20,14 +20,19 @@ values ()                                          --Table to add products, only
 select * from product
 
 
-create table order(
+create table orders (
     order_id serial primary key,
     total numeric,
-    customer_id int references customer(customer_id)
+    customer_id int references customer(customer_id),
+    quantity int,
     date_created timestamp
 );
 
+insert into orders (total, customer_id, quantity, date_created)
+values ($1, $2, $3, $4)
+
 create table order_items (
+
     order_id int references order(order_id),
     product_id int references product(product_id)
 )
@@ -37,3 +42,8 @@ create table favorite(
     customer_id int references customer(customer_id)
 )
 
+
+
+select name, first_name, quantity, total from ecuador e join orders o
+on e.customer_id = o.customer_id join order_items oi on o.order_id = oi.order_id
+join product p on p.product_id = oi.product_id
