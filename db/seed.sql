@@ -24,11 +24,10 @@ create table orders (
     order_id serial primary key,
     total numeric,
     customer_id int references customer(customer_id),
-    quantity int,
+    quantity int
 )
 
-insert into orders (total, customer_id, quantity, date_created)
-values ($1, $2, $3, $4)
+    
 
 create table order_items (
 

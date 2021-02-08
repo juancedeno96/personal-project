@@ -1,43 +1,42 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
+import {useEffect} from 'react'
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateUser, logoutUser } from "../../redux/userReducer";
-class Header extends Component {
+import "./Header.css"
 
-  componentDidMount =()=>{
-this.getUser()
-  }
 
-  getUser = () => {
+const Header = props => {
+
+  useEffect(()=>{
+    getUser()
+  } ,[props])
+
+  const getUser = () => {
     axios.get('/api/me')
     .then(res=>{
-        this.props.updateUser(res.data)
+        props.updateUser(res.data)
     })
     .catch(err=>console.log(err))
   }
-
-  logoutUser = () => {
+  const logoutUser = () => {
       axios.post('/api/logout')
-      .then(_=>this.props.logoutUser())
+      .then(_=>props.logoutUser())
       .catch(err=>console.log(err))
   }
   
 
-  render() {      
-    return this.props.location.pathname !== '/' &&
-    <header>
+     
+    return (props.location.pathname !== '/' &&
+    <header  >
 <Link to ='/home'><span>Home</span> </Link> <br/>
 <Link to ='/profile'><span>Profile</span> </Link> <br/>
 <Link to ='/cart' ><span>shopping cart</span></Link> <br/>
-<p>{this.props.first_name} {this.props.last_name} </p>
-<Link to ='/' ><span onClick={this.logoutUser} >logout</span></Link>
-
-    </header>
-    
-    
-  }
- 
+<p>{props.first_name} {props.last_name} </p>
+<Link to ='/'><span onClick={logoutUser} >logout</span></Link>
+ </header>
+)
 }
 
 const mapStateToProps = reduxState => reduxState.userReducer

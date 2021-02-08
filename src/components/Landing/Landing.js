@@ -8,15 +8,18 @@ class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: [],
-      quantity: 0,
-      total: 0,
-      customer_id: 0,
+      product: []
     };
   }
 
   componentDidMount =()=> {
     this.getProduct();
+  }
+
+  handleChange=(prop, value)=>{
+this.setState({
+  [prop]: value
+})
   }
 
 
@@ -30,6 +33,16 @@ class Landing extends Component {
       })
       .catch((err) => console.log(err));
   };
+
+ 
+  addOrder = ()=>{
+    const {total, customer_id, quantity} = this.state
+    axios.post('/api/add', {total, customer_id, quantity})
+    .then(res=>{
+      this.props.addOrder(res.data)
+    })
+    .catch((err) => console.log(err));
+  }
 
  
   render() {

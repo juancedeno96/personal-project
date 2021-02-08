@@ -1,35 +1,37 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
+import {useEffect} from 'react'
 import { connect } from "react-redux";
 import { updateUser } from "../../redux/userReducer";
 import "./Profile.css";
 
-class Profile extends Component {
-  componentDidMount = () => {
-    this.getUser();
-  };
+const Profile = props =>  {
 
-  getUser = () => {
+  useEffect(()=>{
+    getUser()
+  }, [props])
+
+  const getUser = () => {
     axios
       .get("/api/me")
-      .then((res) => this.props.updateUser(res.data))
+      .then((res) => props.updateUser(res.data))
       .catch((err) => console.log(err));
   };
 
-  render() {
+  
     return (
       <div>
         <img
           className="profile_pic"
-          src={this.props.profile_pic}
-          alt={this.props.first_name}
+          src={props.profile_pic}
+          alt={props.first_name}
         />
         <div>
-          {this.props.first_name} {this.props.last_name}
+          {props.first_name} {props.last_name}
         </div>
       </div>
     );
-  }
+  
 }
 
 const mapStateToProps = (reduxState) => reduxState.userReducer;
