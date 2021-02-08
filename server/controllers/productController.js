@@ -8,8 +8,8 @@ module.exports = {
 
     addOrder: async (req, res) => {
         const db = req.app.get('db')
-        const {total, customer_id, quantity} = req.body
-        const order = await db.order.add_order(total, customer_id, quantity)
+        const {total, customer_id, product_id, quantity} = req.body
+        const order = await db.order.add_order(total, customer_id, product_id, quantity)
         return res.status(200).send(order)
     }
 }

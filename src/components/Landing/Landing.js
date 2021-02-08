@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { updateUser } from "../../redux/userReducer";
+import {getAllProduct} from '../../redux/productReducer'
 import "../Landing/Landing.css";
 
 class Landing extends Component {
@@ -27,17 +28,15 @@ this.setState({
     axios
       .get("/api/all")
       .then((res) => {
-        this.setState({
-          product: res.data
-        });
+        this.props.getAllProduct(res.data)
       })
       .catch((err) => console.log(err));
   };
 
  
   addOrder = ()=>{
-    const {total, customer_id, quantity} = this.state
-    axios.post('/api/add', {total, customer_id, quantity})
+    
+    axios.post('/api/add')
     .then(res=>{
       this.props.addOrder(res.data)
     })
@@ -46,8 +45,10 @@ this.setState({
 
  
   render() {
-    console.log(this.props);
-    const mappedProduct = this.state.product.map((e) => {
+    console.log(this.props)
+    const {product} = this.props.productReducer
+
+    const mappedProduct = product.map((e) => {
       return (
         <div className="product" key={e.product_id}>
           <img src={e.img_url} alt={e.name} />
@@ -58,14 +59,16 @@ this.setState({
         </div>
       );
     });
-    console.log(this.state.product);
-    return <div className="product-container">{mappedProduct}</div>;
+    return <div className='landing-main'>
+      <div className="product-container">{mappedProduct}</div>;
+    </div>
   }
 }
 
 const mapStateToProps = (reduxState) => ({
-  orderReducer: reduxState.orderReducer,
+  
   userReducer: reduxState.userReducer,
+  productReducer: reduxState.productReducer
 });
 
-export default connect(mapStateToProps, { updateUser })(Landing);
+export default connect(mapStateToProps, { updateUser, getAllProduct })(Landing);

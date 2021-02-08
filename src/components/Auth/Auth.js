@@ -30,7 +30,7 @@ const Auth = (props) => {
         props.updateUser(res.data);
         props.history.push("/home");
       })
-      .catch((err) => console.log(err));
+      .catch(() => alert('incorrect email or password'));
   };
 
   const register = (e) => {
@@ -104,6 +104,7 @@ const Auth = (props) => {
         />
          <input
           placeholder="Password"
+          type="password"
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

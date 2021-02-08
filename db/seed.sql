@@ -20,20 +20,14 @@ values ()                                          --Table to add products, only
 select * from product
 
 
-create table orders (
+create table order_item (
     order_id serial primary key,
     total numeric,
     customer_id int references customer(customer_id),
+    product_id int references product(product_id),
     quantity int
 )
 
-    
-
-create table order_items (
-
-    order_id int references order(order_id),
-    product_id int references product(product_id)
-)
 
 create table favorite(
     product_id int references product(product_id)

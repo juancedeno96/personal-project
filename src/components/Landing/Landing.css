@@ -1,11 +1,25 @@
+.landing-main{
+    background: url('https://www.wendyperrin.com/wp-content/uploads/2020/02/Galapagos-Ecuador-cr-Shutterstock-1000x667.jpg');
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
 .product-container {
     display: flex;
-
+    height: 100vh;
+    width: 80vw;
+    border-style: solid;
+    position: relative;
+    left: 10%;
+    margin-top: 5px;
+    background-color: rgba(255, 255, 255, 0.616);
 }
 
 .product{
     width: 400px;
     height: 400px;
+    margin-top: 10px;
 }
 
 .product-container img {

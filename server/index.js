@@ -36,4 +36,4 @@ app.post('/api/logout', authCtrl.logout)
 
 // Product Endpoints
 app.get('/api/all', pc.getAllProduct)
-app.post('/api/add', pc.addOrder)
+app.post(`/api/add`, pc.addOrder)

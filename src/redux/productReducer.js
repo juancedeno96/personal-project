@@ -1,12 +1,11 @@
-import axios from "axios";
 const initialState = {
-  product: {},
+  product: []
 };
 
 const GET_PRODUCT = "GET_PRODUCT";
 
-export function getAllProduct() {
-  const product = axios.get("api/all");
+export function getAllProduct(product) {
+  
   return {
     type: GET_PRODUCT,
     payload: product,
@@ -18,7 +17,8 @@ export default function productReducer(state = initialState, action) {
 
   switch (type) {
     case GET_PRODUCT:
-      return { ...state, product: { payload } };
+      
+      return { ...state,  product: payload  };
 
     default:
       return state;
