@@ -29,7 +29,7 @@ const Header = props => {
 
      
     return (props.location.pathname !== '/' &&
-    <header  >
+    <header className='header'>
 <Link to ='/home'><span>Home</span> </Link> <br/>
 <Link to ='/profile'><span>Profile</span> </Link> <br/>
 <Link to ='/cart' ><span>shopping cart</span></Link> <br/>

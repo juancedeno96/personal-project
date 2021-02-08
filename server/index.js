@@ -1,6 +1,4 @@
 require("dotenv").config();
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser')
 const massive = require("massive");
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 const session = require("express-session");
@@ -10,19 +8,6 @@ const pc = require('./controllers/productController')
 
 const app = express();
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true}))
-app.use(bodyParser.json())
-app.use(cookieParser())
-
-// const { sendEmail } = require('./mail');
-
-
-// app.post('/api/sendMail', (req, res)=>{
-//   console.log(req.body)
-//   sendEmail(req.body.email, req.body.first_name, 'hello')
-// })
-
-
 
 massive({
   connectionString: CONNECTION_STRING,
