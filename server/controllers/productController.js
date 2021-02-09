@@ -8,7 +8,6 @@ module.exports = {
     
     addOrder: async (req, res) => {
         const db = req.app.get('db')
-        console.log(req.body)
         const {total, customer_id, quantity} = req.body
         const {product_id} = req.params
         let order;
@@ -19,5 +18,12 @@ module.exports = {
             console.log(err)
         }
         return res.status(200).send(order)
+    },
+
+    getUserItems: async (req,res)=>{
+        const {customer_id} = req.params
+        const db= req.app.get('db')
+        let items = await db.order.get_items_by_customer_id(customer_id)
+        return res.status(200).send(items)
     }
 }

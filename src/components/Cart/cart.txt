@@ -1,32 +1,36 @@
-import React, {useEffect, useState} from 'react'
+import React,  {Component} from 'react'
 import axios from "axios";
 import { connect } from "react-redux";
 import { updateUser } from "../../redux/userReducer";
 import { Link, withRouter } from "react-router-dom";
 
+class Cart extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            userCart:[]
+        }
+    }   
 
-const Cart =(props)=> {
-    
-    const [userCart, setUserCart] = useState([])
-    
+    componentDidMount=()=>{
+this.getUserItems()
+    }
 
-    useEffect(()=>{
-        getUserItems()
-    }, [props])
-
-    const getUserItems=()=> {
-        const customer_id = props.customer_id
+    getUserItems=()=> {
+        const customer_id = this.props.customer_id
         axios.get(`/api/cart/${customer_id}`)
         .then(res=>{
-            setUserCart(res.data)
+            this.setState({
+                userCart: res.data
+            })
         })
     }
 
-    
-        console.log(props)
-        console.log(userCart)
+    render(){
+        console.log(this.props)
+        console.log(this.state)
 
-        const mappedUserItems = userCart.map((e)=>{
+        const mappedUserItems = this.state.userCart.map((e)=>{
             return(
                 <div className='cartItem' key = {e.product_id}>
                     <p>{e.name}</p>
@@ -44,7 +48,7 @@ const Cart =(props)=> {
             </div>
         )
     }
-
+}
 
 const mapStateToProps = reduxState => reduxState.userReducer
 
