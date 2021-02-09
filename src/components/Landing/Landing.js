@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import { updateUser } from "../../redux/userReducer";
 import {getAllProduct} from '../../redux/productReducer'
 import {addToCart} from '../../redux/cartReducer'
-import "../Landing/Landing.css";
+import "../Landing/Landing.scss";
+
+import { Link, withRouter } from "react-router-dom";
 
 class Landing extends Component {
   constructor(props) {
@@ -24,7 +26,7 @@ class Landing extends Component {
   handleChange=(prop, value, unit_price)=>{
 this.setState({
   [prop]: value,
-  total: value*unit_price
+  total: (value*unit_price)
 })}
 
 
@@ -55,8 +57,10 @@ addToCart=(product_id)=>{
           <img src={prod.img_url} alt={prod.name} />
           <p>{prod.name}</p>
           <p>${prod.unit_price}</p>
-          <button onClick={(e)=>{
+         <Link to='/home'>
+         <button onClick={(e)=>{
             this.addToCart(prod.product_id)}} >add to cart</button>
+         </Link> 
           <input type="number" onChange={e=>{this.handleChange('quantity', +e.target.value, prod.unit_price)}}
            />
         </div>
@@ -75,4 +79,4 @@ const mapStateToProps = (reduxState) => ({
   cartReducer: reduxState.cartReducer
 });
 
-export default connect(mapStateToProps, { updateUser, getAllProduct, addToCart })(Landing);
+export default withRouter(connect(mapStateToProps, { updateUser, getAllProduct, addToCart })(Landing));

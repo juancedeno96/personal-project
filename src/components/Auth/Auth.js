@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { updateUser } from "../../redux/userReducer";
-import './Auth.css'
+import './Auth.scss'
 
 const Auth = (props) => {
   const [first_name, setFirstName] = useState("");

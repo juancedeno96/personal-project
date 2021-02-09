@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateUser, logoutUser } from "../../redux/userReducer";
-import "./Header.css";
+import "./Header.scss";
 
 const Header = (props) => {
   useEffect(() => {

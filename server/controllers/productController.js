@@ -25,5 +25,25 @@ module.exports = {
         const db= req.app.get('db')
         let items = await db.order.get_items_by_customer_id(customer_id)
         return res.status(200).send(items)
+    },
+
+    deleteItem:  (req,res) => {
+        const {product_id} = req.params
+        const db = req.app.get('db')
+        const updatedCart = db.order.delete_items(product_id)
+        return res.status(200).send(updatedCart)
+    },
+
+    updateQuantity: (req, res) => {
+        const {product_id} = req.params
+        const {quantity} = req.body;
+        const db = req.app.get('db')
+        db.order.updatequantity(quantity, product_id)
+        .then(_=>res.sendStatus(200))
     }
 }
+
+// deletePost: (req, res) => {
+//     req.app.get('db').post.delete_post(req.params.id)
+//       .then(_ => res.sendStatus(200))
+//   }

@@ -1,24 +1,10 @@
 import React from "react";
-import axios from "axios";
-import {useEffect} from 'react'
 import { connect } from "react-redux";
 import { updateUser } from "../../redux/userReducer";
-import "./Profile.css";
+import "./Profile.scss";
 
 const Profile = props =>  {
 
-  useEffect(()=>{
-    getUser()
-  }, [props])
-
-  const getUser = () => {
-    axios
-      .get("/api/me")
-      .then((res) => props.updateUser(res.data))
-      .catch((err) => console.log(err));
-  };
-
-  
     return (
       <div>
         <img
