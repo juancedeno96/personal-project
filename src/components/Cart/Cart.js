@@ -6,15 +6,13 @@ import { Link, withRouter } from "react-router-dom";
 
 const Cart = (props) => {
   const [userCart, setUserCart] = useState([]);
-  // const [quantity, setQuantity] = useState(0)
 
   useEffect(() => {
     getUserItems();
-    deleteItems();
-    // updateQuantity()
   }, [props]);
 
   const getUserItems = () => {
+  
     const customer_id = props.customer_id;
     axios
       .get(`/api/cart/${customer_id}`)
@@ -36,13 +34,11 @@ const Cart = (props) => {
 //       .then(res=>res.sendStatus(200))
 //       .catch(err=>console.log(err))
 //   }
-  console.log(props);
-  console.log(userCart);
+  // console.log(props);
+  // console.log(userCart);
 //   console.log(quantity)
 
   const mappedUserItems = userCart.map((prod) => {
-  console.log(prod.product_id)
-
     return (
       <div className="cartItem" key={prod.product_id}>
           
@@ -50,10 +46,10 @@ const Cart = (props) => {
         <img src={prod.img_url} alt={prod.name} />
         <p>x{prod.quantity}</p>
         <p>total: ${prod.total}</p>
-        <button onClick={(e)=>deleteItems(prod.product_id)}>Delete</button>
+        <Link to ='/cart'
+        ><button onClick={()=>deleteItems(prod.product_id)}>Delete</button></Link>
         {/* <input  type ='number' onChange={e=>setQuantity(e.target.value)}/> */}
         {/* <button onClick={(e)=>updateQuantity(prod.product_id)}>update quantity</button> */}
-        
       </div>
       
     )
@@ -70,4 +66,4 @@ const Cart = (props) => {
 
 const mapStateToProps = (reduxState) => reduxState.userReducer;
 
-export default withRouter(connect(mapStateToProps, { updateUser })(Cart));
+export default withRouter(connect(mapStateToProps, { updateUser })(Cart))

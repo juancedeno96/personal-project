@@ -5,7 +5,6 @@ import { updateUser } from "../../redux/userReducer";
 import {getAllProduct} from '../../redux/productReducer'
 import {addToCart} from '../../redux/cartReducer'
 import "../Landing/Landing.scss";
-
 import { Link, withRouter } from "react-router-dom";
 
 class Landing extends Component {

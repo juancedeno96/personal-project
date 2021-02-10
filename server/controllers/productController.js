@@ -34,16 +34,12 @@ module.exports = {
         return res.status(200).send(updatedCart)
     },
 
-    updateQuantity: (req, res) => {
-        const {product_id} = req.params
-        const {quantity} = req.body;
+    getTotal: async (req, res) => {
+        const {customer_id} = req.params;
         const db = req.app.get('db')
-        db.order.updatequantity(quantity, product_id)
-        .then(_=>res.sendStatus(200))
+        const total = await db.order.get_grand_total(customer_id)
+        return res.status(200).send(total)
     }
+   
 }
 
-// deletePost: (req, res) => {
-//     req.app.get('db').post.delete_post(req.params.id)
-//       .then(_ => res.sendStatus(200))
-//   }

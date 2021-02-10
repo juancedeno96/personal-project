@@ -35,7 +35,14 @@ background-size: cover;
   .auth-container {
     height: 65vh;
     width: 70vw;
+  @include flex(center, space-evenly, column);
+
  
+  }
+
+  .auth-container input{
+height: 30px;
+width: 150px;
   }
 }
 
