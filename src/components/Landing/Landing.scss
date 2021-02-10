@@ -1,3 +1,6 @@
+@import '../../scss/variables';
+@import '../../scss//mixins';
+
 .landing-main{
     background: url('https://www.wendyperrin.com/wp-content/uploads/2020/02/Galapagos-Ecuador-cr-Shutterstock-1000x667.jpg');
 background-position: center;
@@ -6,14 +9,14 @@ background-size: cover;
 }
 
 .product-container {
-    display: flex;
+    @include flex(none, space-evenly, row );
     height: 100vh;
     width: 80vw;
     border-style: solid;
     position: relative;
     left: 10%;
     margin-top: 5px;
-    background-color: rgba(255, 255, 255, 0.616);
+    background-color: $clear;
 }
 
 .product{
@@ -25,4 +28,26 @@ background-size: cover;
 .product-container img {
     height: 250px;
     width: 250px;
+}
+
+@media(max-width: 768px){
+.product-container {
+height: 100vh;
+width: 100vw;
+left:0;
+
+
+}
+
+.product{
+    height: 150px;
+    width: 150px;
+}
+
+.product img{
+    height: 150px;
+    width: 150px;
+    margin-top: 25px;
+
+}
 }

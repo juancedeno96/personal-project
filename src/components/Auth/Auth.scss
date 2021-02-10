@@ -1,28 +1,15 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
 .auth-main {
+  @include flex(center, center, none);
   height: 100vh;
   width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center ;
   background: url('https://www.wendyperrin.com/wp-content/uploads/2020/02/Galapagos-Ecuador-cr-Shutterstock-1000x667.jpg');
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 
-}
-
-.auth-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 60vh;
-  width: 40vw;
-  box-sizing: border-box;
-  background: rgba(245, 245, 245, 0.404);
-  
-}
 
 .auth-container h1 {
     margin: 0;
@@ -32,3 +19,36 @@ background-size: cover;
     text-decoration: underline;
     cursor:pointer;
 }
+
+}
+.auth-container {
+  @include flex(center, space-between, column);
+  position: relative;
+  height: 60vh;
+  width: 40vw;
+  box-sizing: border-box;
+  background: $clear;
+  
+}
+
+@media(max-width: 768px){
+  .auth-container {
+    height: 65vh;
+    width: 70vw;
+ 
+  }
+}
+
+
+
+@media(max-width: 411px) {
+
+  .auth-container {
+    height: 70vh;
+    width: 100vw;
+  }
+
+}
+
+
+

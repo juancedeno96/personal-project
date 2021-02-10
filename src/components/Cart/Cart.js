@@ -6,7 +6,7 @@ import { Link, withRouter } from "react-router-dom";
 
 const Cart = (props) => {
   const [userCart, setUserCart] = useState([]);
-  const [quantity, setQuantity] = useState(0)
+  // const [quantity, setQuantity] = useState(0)
 
   useEffect(() => {
     getUserItems();
@@ -51,7 +51,7 @@ const Cart = (props) => {
         <p>x{prod.quantity}</p>
         <p>total: ${prod.total}</p>
         <button onClick={(e)=>deleteItems(prod.product_id)}>Delete</button>
-        <input  type ='number' onChange={e=>setQuantity(e.target.value)}/>
+        {/* <input  type ='number' onChange={e=>setQuantity(e.target.value)}/> */}
         {/* <button onClick={(e)=>updateQuantity(prod.product_id)}>update quantity</button> */}
         
       </div>
