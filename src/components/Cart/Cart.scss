@@ -2,21 +2,57 @@
 @import '../../scss/variables';
 
 .cart-main{
-    background: url('https://www.state.gov/wp-content/uploads/2019/04/Ecuador-e1556042668750-2501x1406.jpg');
+    background: url('https://previews.123rf.com/images/rpbmedia/rpbmedia1802/rpbmedia180200389/96172288-landscape-around-the-city-of-quito-ecuador.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .cart-container{
-    height: 100vh;
     width: 80vh;
+}
+
+.cart-container img {
+    height: 100px;
+    width: 100px;
+    border-radius: 30%;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 7px rgb(58, 58, 58);
+
+}
+
+.cartItem {
+    @include flex(center, space-evenly, row);
+    position: relative;
+    height: 200px;
+    width: 85%;
+    background-color: white;
+    top: 20px;
+    left: 65px;
+    margin-top: 20px;
+    box-shadow: 5px 5px 5px rgb(58, 58, 58);
+
 }
 
 .gray{
     position: relative;
-    left: 25%;
+    left: 0%;
     width: 75vw;
     height: 100vh;
-    background-color: lightgray;
+    background-color: $clear;
+    overflow: scroll;
+}
+
+.cart-main button {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    left:40%;
+}
+
+#check-btn{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    bottom: 500px;
 }

@@ -32,16 +32,7 @@ const Cart = (props) => {
     });
   };
 
-  const mappedUserItems = userCart.map((prod) => {
-    return (
-      <div className="cartItem" key={prod.product_id}>
-        <p>{prod.name}</p>
-        <img src={prod.img_url} alt={prod.name} />
-        <p>x{prod.quantity}</p>
-        <p>total: ${prod.total}</p>
-      </div>
-    );
-  });
+  
 
   const mappedTotal = total.map((e) => {
     console.log(+e.sum);
@@ -59,8 +50,7 @@ const Cart = (props) => {
   });
 
   return (
-    <div>
-      {mappedUserItems}
+    <div className='checkout-main'>
       <p>{mappedTotal}</p>
     </div>
   );

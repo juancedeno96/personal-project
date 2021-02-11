@@ -42,7 +42,7 @@ const Cart = (props) => {
   const mappedUserItems = userCart.map((prod) => {
     return (
       
-      <div className='cart-container'>
+      
       <div className="cartItem" key={prod.product_id}>
         <p>{prod.name}</p>
         <img src={prod.img_url} alt={prod.name} />
@@ -53,7 +53,7 @@ const Cart = (props) => {
         {/* <input  type ='number' onChange={e=>setQuantity(e.target.value)}/> */}
         {/* <button onClick={(e)=>updateQuantity(prod.product_id)}>update quantity</button> */}
       </div>
-      </div>
+      
       
     )
   });
@@ -62,11 +62,11 @@ const Cart = (props) => {
     <div className='cart-container'>
       <div className='gray'>
       {mappedUserItems}
-      <Link to="/checkout">
-        <button>Go to Checkout</button>
-      </Link>
       </div>
     </div>
+    <Link to="/checkout">
+        <button id='check-btn'>Go to Checkout</button>
+      </Link>
     </div>
   );
 };
