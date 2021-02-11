@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { updateUser } from "../../redux/userReducer";
 import { connect } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
 import "./Checkout.scss";
 
 const Cart = (props) => {
@@ -11,7 +12,7 @@ const Cart = (props) => {
 
   useEffect(() => {
     getUserItems();
-    getTotal()
+    getTotal();
   }, [props]);
 
   const getUserItems = () => {
@@ -26,12 +27,10 @@ const Cart = (props) => {
 
   const getTotal = () => {
     const customer_id = props.customer_id;
-    axios.get(`/api/total/${customer_id}`)
-    .then(res=>{
-      setTotal(res.data)
-    })
-  }
-
+    axios.get(`/api/total/${customer_id}`).then((res) => {
+      setTotal(res.data);
+    });
+  };
 
   const mappedUserItems = userCart.map((prod) => {
     return (
@@ -44,26 +43,29 @@ const Cart = (props) => {
     );
   });
 
-  const mappedTotal = total.map(e=>{
-    console.log(+e.sum)
+  const mappedTotal = total.map((e) => {
+    console.log(+e.sum);
     return (
       <div>
-        <p>Total Cost: ${+e.sum}</p>
-        <button>Pay for Order</button>
+        <p>Delivery Method: Curbside Pick-Up</p>
+        <p>Total Cost: ${e.cost}</p>
+        <p>Number of Items: {e.quantity}</p>
+
+        <Link to="/confirmation">
+          <button>Pay for Order</button>
+        </Link>
       </div>
-    )
-  })
+    );
+  });
 
-
-  return <div>
+  return (
+    <div>
       {mappedUserItems}
-      <p>{mappedTotal}
-      </p>
-
-  </div>;
-
+      <p>{mappedTotal}</p>
+    </div>
+  );
 };
 
 const mapStateToProps = (reduxState) => reduxState.userReducer;
 
-export default connect(mapStateToProps, { updateUser })(Cart);
+export default withRouter(connect(mapStateToProps, { updateUser })(Cart));

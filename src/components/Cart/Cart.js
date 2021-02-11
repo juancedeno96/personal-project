@@ -41,7 +41,6 @@ const Cart = (props) => {
   const mappedUserItems = userCart.map((prod) => {
     return (
       <div className="cartItem" key={prod.product_id}>
-          
         <p>{prod.name}</p>
         <img src={prod.img_url} alt={prod.name} />
         <p>x{prod.quantity}</p>

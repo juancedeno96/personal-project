@@ -47,6 +47,7 @@ app.get('/api/all', pc.getAllProduct)
 app.post('/api/add/:product_id', pc.addOrder)
 app.get('/api/cart/:customer_id', pc.getUserItems)
 app.delete('/api/delete/:product_id', pc.deleteItem)
+app.delete('/api/delete-order/:customer_id', pc.deleteOrder)
 app.get('/api/total/:customer_id', pc.getTotal);
 
 //Customer Endpoints

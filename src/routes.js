@@ -5,7 +5,7 @@ import Cart from "./components/Cart/Cart";
 import Checkout from "./components/Checkout/Checkout";
 import Landing from "./components/Landing/Landing";
 import Profile from "./components/Profile/Profile";
-
+import Confirmation from './components/Confirmation/Confirmation'
 export default (
   <Switch>
     <Route exact path ='/' component ={Auth}/>
@@ -13,5 +13,6 @@ export default (
     <Route path='/cart' component={Cart} />
     <Route path='/profile' component={Profile} />
     <Route path='/checkout' component={Checkout} />
+    <Route path='/confirmation' component={Confirmation} />
   </Switch>
 );

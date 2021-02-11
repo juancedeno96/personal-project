@@ -34,7 +34,7 @@ const updateInfo =(e)=>{
         {editView
         ?(
           <section>
-            <form>
+            
               <section>
                 <h2>Edit Profile</h2>
                 <h3 onClick={()=>setEditView(!editView)}>X</h3>
@@ -61,7 +61,6 @@ const updateInfo =(e)=>{
               onChange={e=>setEmailInput(e.target.value)}
               />
               <button onClick={e=>updateInfo(e)}>Submit</button>
-            </form>
           </section>
         ) : null
         }
