@@ -3,6 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { updateUser } from "../../redux/userReducer";
 import { Link, withRouter } from "react-router-dom";
+import './Cart.scss';
 
 const Cart = (props) => {
   const [userCart, setUserCart] = useState([]);
@@ -40,6 +41,8 @@ const Cart = (props) => {
 
   const mappedUserItems = userCart.map((prod) => {
     return (
+      
+      <div className='cart-container'>
       <div className="cartItem" key={prod.product_id}>
         <p>{prod.name}</p>
         <img src={prod.img_url} alt={prod.name} />
@@ -50,15 +53,20 @@ const Cart = (props) => {
         {/* <input  type ='number' onChange={e=>setQuantity(e.target.value)}/> */}
         {/* <button onClick={(e)=>updateQuantity(prod.product_id)}>update quantity</button> */}
       </div>
+      </div>
       
     )
   });
   return (
-    <div>
+    <div className='cart-main'>
+    <div className='cart-container'>
+      <div className='gray'>
       {mappedUserItems}
       <Link to="/checkout">
         <button>Go to Checkout</button>
       </Link>
+      </div>
+    </div>
     </div>
   );
 };

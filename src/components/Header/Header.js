@@ -6,10 +6,13 @@ import { connect } from "react-redux";
 import { updateUser, logoutUser } from "../../redux/userReducer";
 import "./Header.scss";
 import menu from '../../menu.svg'
+import cart from '../../shopping-cart.svg'
+// import logout from '../../logout.svg'
 
 const Header = (props) => {
 
 const [dropView, setDropView] = useState(false)
+console.log(props)
 
 const toggleDropdown = () => {
   setDropView(!dropView)
@@ -38,33 +41,34 @@ const toggleDropdown = () => {
   return (
     props.location.pathname !== "/" && (
       <header className="header">
-       <h1 style={{color: "white"}}>Ecuadorian Food</h1>
+      <Link to='/home' style={{ textDecoration: 'none' }}
+      ><h1 style={{color: "white"}}>Ecuadorian Food</h1></Link> 
 
         <nav className = 'nav-bar'>
           <Link to="/home" style={{ textDecoration: 'none' }}>
             <span>Home</span>{" "}
           </Link>{" "}
           <Link to="/profile" style={{ textDecoration: 'none' }}>
-            <span>Profile</span>{" "}
+            <span><img id="pic" src={props.profile_pic}/></span>{" "}
           </Link>
           <Link to="/cart" style={{ textDecoration: 'none' }}>
-            <span>Shopping Cart</span>
+            <span><img src={cart}/></span>
           </Link>
           <Link to="/" style={{ textDecoration: 'none' }}>
-            <span onClick={logoutUser}>Logout</span>
+            <span onClick={logoutUser}>Sign Out</span>
           </Link>
         </nav>
           <span className="dropdown-btn"  onClick={toggleDropdown}><img src={menu} alt='menu button'/></span>
 
         {dropView ? (
         <nav className='mobile-menu'>
-          <Link to="/profile">
+          <Link to="/profile" style={{ textDecoration: 'none' }}>
             <span>Profile</span>
           </Link>
-          <Link to="/cart">
-            <span>Shopping Cart</span>
+          <Link to="/cart" style={{ textDecoration: 'none' }}>
+            <span><img src={cart}/></span>
           </Link>
-          <Link to="/">
+          <Link to="/" style={{ textDecoration: 'none' }}>
             <span onClick={logoutUser}>Logout</span>
           </Link>
         </nav>

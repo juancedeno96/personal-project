@@ -6,8 +6,7 @@
   height: 15vh;
   width: 100vw;
   background-color: #111111e5;
-  color: white
-  
+  color: white;
 }
 
 .header h1{
@@ -30,6 +29,17 @@
 .nav-bar span{
 text-decoration: none;
 color: white;
+}
+
+.nav-bar span img {
+  height: 50px;
+  width: 50px;
+}
+
+#pic{
+  height: 50px;
+  width:50px;
+  border-radius: 50%;
 }
 
 
@@ -59,8 +69,8 @@ color: white;
   }
 
   .dropdown-btn img {
-      height: 50px;
-      width: 50px;
+      height: 40px;
+      width: 40px;
   }
 
 
@@ -78,4 +88,15 @@ color: white;
     font-size: 20px;
     
   }
+
+  .mobile-menu span{
+    text-decoration: none;
+    color:  #111111e5;
+    }
+
+    .mobile-menu span img {
+      height: 50px;
+      width: 50px;
+    }
+
 }
