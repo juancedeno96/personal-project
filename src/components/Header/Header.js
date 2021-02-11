@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateUser, logoutUser } from "../../redux/userReducer";
 import "./Header.scss";
+import menu from '../../menu.svg'
 
 const Header = (props) => {
+
+const [dropView, setDropView] = useState(false)
+
+const toggleDropdown = () => {
+  setDropView(!dropView)
+}
+
+
   useEffect(() => {
     getUser();
   }, [props]);
@@ -29,14 +38,28 @@ const Header = (props) => {
   return (
     props.location.pathname !== "/" && (
       <header className="header">
-        <img src="https://thumbs.dreamstime.com/b/smiling-flag-ecuador-as-chef-food-cartoon-style-design-smiling-flag-ecuador-as-chef-food-cartoon-style-design-vector-166353496.jpg" />
+       <h1 style={{color: "white"}}>Ecuadorian Food</h1>
 
         <nav className = 'nav-bar'>
-          <Link to="/home">
+          <Link to="/home" style={{ textDecoration: 'none' }}>
             <span>Home</span>{" "}
           </Link>{" "}
-          <Link to="/profile">
+          <Link to="/profile" style={{ textDecoration: 'none' }}>
             <span>Profile</span>{" "}
+          </Link>
+          <Link to="/cart" style={{ textDecoration: 'none' }}>
+            <span>Shopping Cart</span>
+          </Link>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <span onClick={logoutUser}>Logout</span>
+          </Link>
+        </nav>
+          <span className="dropdown-btn"  onClick={toggleDropdown}><img src={menu} alt='menu button'/></span>
+
+        {dropView ? (
+        <nav className='mobile-menu'>
+          <Link to="/profile">
+            <span>Profile</span>
           </Link>
           <Link to="/cart">
             <span>Shopping Cart</span>
@@ -45,6 +68,8 @@ const Header = (props) => {
             <span onClick={logoutUser}>Logout</span>
           </Link>
         </nav>
+        
+         ): null }
       </header>
     )
   );

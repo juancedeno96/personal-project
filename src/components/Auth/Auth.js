@@ -3,6 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { updateUser } from "../../redux/userReducer";
 import './Auth.scss'
+import logo from '../../Flag-map_of_Ecuador.svg'
 
 const Auth = (props) => {
   const [first_name, setFirstName] = useState("");
@@ -55,7 +56,9 @@ const Auth = (props) => {
   return (
     <div className='auth-main'>
       <section className='auth-container'>
-        <h1>Welcome to Ecuadorian Food App! </h1>
+        <h1>Welcome to Ecuadorian Food App!
+          <img src={logo}/>
+           </h1>
         {registerView ? (
           <>
             <h3>Register Below</h3>

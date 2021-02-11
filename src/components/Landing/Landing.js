@@ -55,7 +55,7 @@ addToCart=(product_id)=>{
         <div className="product" key={prod.product_id}>
           <img src={prod.img_url} alt={prod.name} />
           <p>{prod.name}</p>
-          <p>${prod.unit_price}</p>
+          <p>${prod.unit_price}.00</p>
          <Link to='/home'>
          <button onClick={(e)=>{
             this.addToCart(prod.product_id)}} >add to cart</button>

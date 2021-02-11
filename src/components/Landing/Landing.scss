@@ -2,35 +2,46 @@
 @import '../../scss//mixins';
 
 .landing-main{
-    background: url('https://www.wendyperrin.com/wp-content/uploads/2020/02/Galapagos-Ecuador-cr-Shutterstock-1000x667.jpg');
+    background: url('https://www.state.gov/wp-content/uploads/2019/04/Ecuador-e1556042668750-2501x1406.jpg');
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 }
 
 .product-container {
-    @include flex(none, space-evenly, row );
-    height: 100vh;
+    @include flex(flex-start, space-evenly, row );
+    height: 90vh;
     width: 80vw;
-    border-style: solid;
+    box-sizing: border-box;
     position: relative;
     left: 10%;
+    top: 1px;
     margin-top: 5px;
     background-color: $clear;
+    flex-wrap: wrap;
+
 }
 
 .product{
-    width: 400px;
+    width: 300px;
     height: 400px;
-    margin-top: 10px;
+    margin-top: 20px;
+    
+    font-size: 20px;
+    color: #363636;
+
 }
 
 .product-container img {
-    height: 250px;
-    width: 250px;
+    height: 220px;
+    width: 220px;
 }
 
 @media(max-width: 768px){
+.landing-main{
+    width: 100vw;
+}
+
 .product-container {
 height: 100vh;
 width: 100vw;
