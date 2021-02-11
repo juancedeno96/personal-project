@@ -9,15 +9,20 @@ const {customer_id, first_name, last_name, email, profile_pic} = props.userReduc
 const [firstName, setFirstName] = useState('')
 const [lastName, setLastName] = useState('')
 const [emailInput, setEmailInput] = useState('')
+const [editView, setEditView] = useState(false)
 
 const updateInfo =(e)=>{
   e.preventDefault()
 
-  axios.put(`/api/update-info/:${customer_id}`, {firstName, lastName, emailInput})
+  axios.put(`/api/update-info/${customer_id}`, {firstName, lastName, emailInput})
   .then(res=>{
     props.updateUser(res.data)
+    setEditView(!editView)
   })
+  .catch(err=>console.log(err))
 }
+
+
 
 
 
@@ -25,14 +30,51 @@ const updateInfo =(e)=>{
   console.log(props)
 
     return (
-      <div>
-       <p>{customer_id}</p>
+      <section>
+        {editView
+        ?(
+          <section>
+            <form>
+              <section>
+                <h2>Edit Profile</h2>
+                <h3 onClick={()=>setEditView(!editView)}>X</h3>
+              </section>
+
+              <input
+              type='text'
+              placeholder='First Name'
+              value = {firstName}
+              onChange={e=>setFirstName(e.target.value)}
+              />
+
+              <input
+              type='text'
+              placeholder='Last Name'
+              value={lastName}
+              onChange={e=>setLastName(e.target.value)}
+              />
+
+              <input
+              type='text'
+              placeholder ='Email'
+              value={emailInput}
+              onChange={e=>setEmailInput(e.target.value)}
+              />
+              <button onClick={e=>updateInfo(e)}>Submit</button>
+            </form>
+          </section>
+        ) : null
+        }
+
+
+      <section> <p>{customer_id}</p>
        <p>{first_name}</p>
        <p>{last_name}</p>
        <p>{email}</p>
        <img className='profile_pic' src={profile_pic} alt = {first_name}/>
-
-      </div>
+       </section>
+       <button onClick={()=>setEditView(!editView)}>Edit Info</button>
+      </section>
     );
   
 }
