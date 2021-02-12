@@ -42,12 +42,12 @@ const toggleDropdown = () => {
     props.location.pathname !== "/" && (
       <header className="header">
       <Link to='/home' style={{ textDecoration: 'none' }}
-      ><h1 style={{color: "white"}}>Ecuadorian Food</h1></Link> 
+      ><h1 style={{color: "white"}}>Ecuadorian Cuisine</h1></Link> 
 
         <nav className = 'nav-bar'>
           <Link to="/home" style={{ textDecoration: 'none' }}>
             <span>Home</span>{" "}
-          </Link>{" "}
+          </Link>
           <Link to="/profile" style={{ textDecoration: 'none' }}>
             <span><img id="pic" src={props.profile_pic}/></span>{" "}
           </Link>

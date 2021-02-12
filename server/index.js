@@ -4,6 +4,7 @@ const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 const session = require("express-session");
 const express = require("express");
 // const path = require('path');
+const mailCtrl = require('./controllers/mailController');
 const authCtrl = require("./controllers/authController");
 const pc = require('./controllers/productController')
 const customer= require('./controllers/customerController')
@@ -52,3 +53,9 @@ app.get('/api/total/:customer_id', pc.getTotal);
 
 //Customer Endpoints
 app.put('/api/update-info/:customer_id', customer.updateInfo )
+
+//mailer endpoint
+app.post('/api/email', mailCtrl.email)
+
+
+

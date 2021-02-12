@@ -3,6 +3,7 @@ import { updateUser } from "../../redux/userReducer";
 import { connect } from "react-redux";
 import axios from 'axios';
 import { Link, withRouter } from "react-router-dom";
+import './Confirmation.scss'
 
 
 
@@ -20,7 +21,9 @@ const deleteOrder=(customer_id)=>{
 
 
     return(
-        <div><h1>Thank you for shopping with us!</h1> <br/><br/>
+        <div className='confirmation-main'>
+            <h1>Your order has been placed!</h1>
+            <h1>Thank you for shopping with us!</h1> <br/><br/>
             <Link to ='/home'>
             <button onClick={()=>deleteOrder(props.customer_id)}>Close</button>
             </Link>

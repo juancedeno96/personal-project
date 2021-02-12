@@ -1,22 +1,28 @@
 @import "../../scss/mixins";
 @import '../../scss/variables';
 
-.checkout-main{
-    background: url('http://aboutgalapagos.nathab.com/wp-content/uploads/2015/12/Greg-Courter-blue-boobies.jpg');
+
+.contact-main{
+    background: url('https://i.pinimg.com/originals/02/d1/43/02d143f5b9d0f8c04f1561f74343b2c2.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     position: relative;
-    bottom: 20px;
+    
 }
-
-.order-summary{
-@include flex(center, space-evenly, column);
-height: 90vh;
+.contact-form{
+@include flex(center, none, column);
+height: 80vh;
 width: 50vw;
+border-style: solid;
 position: relative;
 left: 25%;
 top: 10px; 
 background-color: $clear;
+
+textarea{
+    height: 200px;
+    width: 450px;
+}
 }

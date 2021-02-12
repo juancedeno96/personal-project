@@ -23,10 +23,6 @@ const updateInfo =(e)=>{
 }
 
 
-
-
-
-
   console.log(props)
 
     return (
