@@ -7,7 +7,7 @@ import { updateUser, logoutUser } from "../../redux/userReducer";
 import "./Header.scss";
 import menu from '../../menu.svg'
 import cart from '../../shopping-cart.svg'
-// import logout from '../../logout.svg'
+
 
 const Header = (props) => {
 
@@ -48,15 +48,19 @@ const toggleDropdown = () => {
           <Link to="/home" style={{ textDecoration: 'none' }}>
             <span>Home</span>{" "}
           </Link>
+
+          <Link to="/contact" style={{ textDecoration: 'none' }}>
+            <span>Contact</span>{" "}
+          </Link>
+
+           <Link to="/cart" style={{ textDecoration: 'none' }}>
+            <span><img src={cart}/></span>
+          </Link>
+
           <Link to="/profile" style={{ textDecoration: 'none' }}>
             <span><img id="pic" src={props.profile_pic}/></span>{" "}
           </Link>
-          <Link to="/cart" style={{ textDecoration: 'none' }}>
-            <span><img src={cart}/></span>
-          </Link>
-          <Link to="/" style={{ textDecoration: 'none' }}>
-            <span onClick={logoutUser}>Sign Out</span>
-          </Link>
+         
         </nav>
           <span className="dropdown-btn"  onClick={toggleDropdown}><img src={menu} alt='menu button'/></span>
 

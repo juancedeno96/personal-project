@@ -1,9 +1,62 @@
-.profile_pic{
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 50px;
-    margin-top: 50px;
+@import "../../scss/mixins";
+@import "../../scss/variables";
 
+.profile-main {
+  background: url("https://cdn.kimkim.com/files/a/content_articles/featured_photos/cb23ba9cbe01454eafc746684c2ce8681367edd7/big-cde8e50e5260f1740a2830cbbce32d18.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  bottom: 17px;
+}
+
+.profile-box {
+  @include flex(center, none, column);
+  height: 90vh;
+  width: 25vw;
+  position: relative;
+  left: 0%;
+  top: 20px;
+  background-color: $clear;
+}
+
+.edit {
+  @include flex(center, none, column);
+  height: 80vh;
+  width: 25vw;
+  position: fixed;
+  left: 0%;
+  z-index: 2;
+  border-style: solid;
+  background-color: whitesmoke;
+}
+
+.profile_pic {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.favorites {
+  height: 38vh;
+  width: 70vw;
+  border-style: solid;
+  background-color: $clear;
+  position: relative;
+  left: 27%;
+  bottom: 88%;
+}
+
+.order-history {
+  height: 38vh;
+  width: 70vw;
+  border-style: solid;
+  background-color: $clear;
+  position: relative;
+  left: 27%;
+  bottom: 85%;
 }

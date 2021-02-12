@@ -22,9 +22,9 @@ module.exports = {
           subject: subject,
           text: message,
           html: `<div>
-                        <p>New Message from ${firstName} ${lastName}</p>
+                        <p>You got a new message from: ${firstName} ${lastName}</p>
                         <p>${message}<p>
-                        <p>Return email: ${email}</p>
+                        <p>Sender email: ${email}</p>
                        </div>`,
         },
         (err, res) => {

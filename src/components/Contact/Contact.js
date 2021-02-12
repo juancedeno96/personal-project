@@ -56,7 +56,7 @@ console.log(props)
                     </form>
                 ) 
                 : (
-                    <section>
+                    <section className='sent'>
                         <h2>Your message has been sent!</h2>
                         <div ><Link to = '/home'><button classname= 'home-btn'>Continue Shopping</button></Link></div>
                     </section>

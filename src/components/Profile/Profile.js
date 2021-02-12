@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import axios from 'axios'
 import { connect } from "react-redux";
-import { updateUser } from "../../redux/userReducer";
+import {Link} from 'react-router-dom'
+import { updateUser, logoutUser } from "../../redux/userReducer";
 import "./Profile.scss";
 
 const Profile = (props) =>  {
@@ -26,14 +27,14 @@ const updateInfo =(e)=>{
   console.log(props)
 
     return (
+      <div className='profile-main'>
       <section>
         {editView
         ?(
-          <section>
+          <section className='edit'>
             
-              <section>
+              <section >
                 <h2>Edit Profile</h2>
-                <h3 onClick={()=>setEditView(!editView)}>X</h3>
               </section>
 
               <input
@@ -56,20 +57,32 @@ const updateInfo =(e)=>{
               value={emailInput}
               onChange={e=>setEmailInput(e.target.value)}
               />
-              <button onClick={e=>updateInfo(e)}>Submit</button>
+              <button onClick={e=>updateInfo(e)}>Submit</button> <br/>
+              <button onClick={()=>setEditView(!editView)}>Cancel</button>
           </section>
         ) : null
         }
 
 
-      <section> <p>{customer_id}</p>
-       <p>{first_name}</p>
-       <p>{last_name}</p>
-       <p>{email}</p>
-       <img className='profile_pic' src={profile_pic} alt = {first_name}/>
-       </section>
+      <section className='profile-box'>
+      <img className='profile_pic' src={profile_pic} alt = {first_name}/>
+       <h2>{first_name} {last_name}</h2>
+       <h2>{email}</h2> <br/>
        <button onClick={()=>setEditView(!editView)}>Edit Info</button>
+       <Link to="/" style={{ textDecoration: 'none' }}>
+            <button onClick={logoutUser}>Sign Out</button>
+          </Link>
+       </section>
       </section>
+
+      <section className='favorites'>
+        <h2>Favorites: (Under Construction!)</h2>
+      </section>
+
+      <section className='order-history'>
+        <h2>Past Orders: (Under Construction)</h2>
+      </section>
+      </div>
     );
   
 }
@@ -77,4 +90,4 @@ const updateInfo =(e)=>{
 
 const mapStateToProps = (reduxState) => reduxState;
 
-export default connect(mapStateToProps, { updateUser })(Profile);
+export default connect(mapStateToProps, { updateUser, logoutUser })(Profile);
