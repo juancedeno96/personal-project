@@ -20,7 +20,7 @@ const deleteOrder=(customer_id)=>{
 
 
     return(
-        <div>Thank you for shopping with us!
+        <div><h1>Thank you for shopping with us!</h1> <br/><br/>
             <Link to ='/home'>
             <button onClick={()=>deleteOrder(props.customer_id)}>Close</button>
             </Link>

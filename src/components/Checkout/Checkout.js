@@ -37,10 +37,10 @@ const Cart = (props) => {
   const mappedTotal = total.map((e) => {
     console.log(+e.sum);
     return (
-      <div>
-        <p>Delivery Method: Curbside Pick-Up</p>
-        <p>Total Cost: ${e.cost}</p>
-        <p>Number of Items: {e.quantity}</p>
+      <div className='order-summary'>
+        <h2>Delivery Method: Curbside Pick-Up</h2>
+        <h2>Total Cost: ${e.cost}.00</h2>
+        <h2>Number of Items: {e.quantity}</h2>
 
         <Link to="/confirmation">
           <button>Pay for Order</button>

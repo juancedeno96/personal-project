@@ -44,10 +44,10 @@ const Cart = (props) => {
       
       
       <div className="cartItem" key={prod.product_id}>
-        <p>{prod.name}</p>
+        <h1>{prod.name}</h1>
         <img src={prod.img_url} alt={prod.name} />
-        <p>x{prod.quantity}</p>
-        <p>total: ${prod.total}</p>
+        <h3>X {prod.quantity}</h3>
+        <h3>total: ${prod.total}.00</h3>
         <Link to ='/cart'
         ><button onClick={()=>deleteItems(prod.product_id)}>Delete</button></Link>
         {/* <input  type ='number' onChange={e=>setQuantity(e.target.value)}/> */}
