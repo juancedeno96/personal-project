@@ -60,7 +60,7 @@ addToCart=(product_id)=>{
          <button onClick={(e)=>{
             this.addToCart(prod.product_id)}} >add to cart</button>
          </Link> 
-          <input type="number" onChange={e=>{this.handleChange('quantity', +e.target.value, prod.unit_price)}}
+          <input type="number" min="1" max="10" onChange={e=>{this.handleChange('quantity', +e.target.value, prod.unit_price)}}
            />
         </div>
       );
